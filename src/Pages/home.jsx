@@ -1,7 +1,7 @@
 // pages/index.js
 
 import React from "react";
-import Hero from "../components/Navbar/Hero/Hero";
+import Hero from "../components/Hero/Hero";
 
 const Home = () => {
   return <Hero />;
