@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* @tailwind base;
+@tailwind components; */
+@tailwind utilities;
+
+@theme {
+  --color-soloPurple: #a480f2;
+  --color-soloLightBlue: #d4d9ff;
+}
+
+/* Custom  Animation */
+@layer utilities {
+  @keyframes float {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-15px);}
+  }
+
+  @keyframes fadeUp {
+    0% {opacity: 0, transform: translateY(20px); }
+    100% {opacity: 1, transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    0% {opacity: 0; }
+    100% {opacity: 1; }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fadeUp {
+    animation: fadeUp 0.9s ease forwards;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 1.4s ease forwards;
+  }
+
+}
