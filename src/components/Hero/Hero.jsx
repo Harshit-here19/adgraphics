@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section
       className="relative w-full bg-white overflow-hidden flex items-center justify-center px-6 md:px-20"
-      style={{ minHeight: `calc(100vh - 64px)` }}
+      style={{ minHeight: `calc(100vh - 4px)` }}
     >
       {/* Floating Shapes */}
       <div className="absolute top-10 left-10 w-20 h-20 bg-red-500 animate-float"></div>
@@ -32,7 +32,7 @@ export default function Hero() {
           that speak volumes.
         </p>
 
-        <button className="mt-8 px-6 py-3 bg-red-500 text-white font-semibold rounded-full animate-fadeIn [animation-delay:.8s] hover:bg-red-700 transition">
+        <button className="mt-8 bg-red-500 text-white font-semibold rounded-full animate-fadeIn [animation-delay:.8s] hover:bg-red-700 transition" style={{padding:"0.5rem 1rem"}}>
           View Portfolio
         </button>
       </div>

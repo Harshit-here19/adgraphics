@@ -11,8 +11,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   padding: 2rem 1rem;
   z-index: 12;
-  /* Third Nav */
-  /* justify-content: flex-start; */
+  padding: 2rem 1rem;
 `;
 
 export const NavLink = styled(Link)`
