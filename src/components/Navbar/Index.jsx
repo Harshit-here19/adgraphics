@@ -1,32 +1,64 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import gsap from "gsap";
 
 const Navbar = () => {
-  // const activeStyle =
-  //   "text-soloLightBlue flex items-center py-2 h-full cursor-pointer hover:text-soloPurple active:underline no-underline";
-
   const [isOpen, setIsOpen] = useState(false);
+  const navbarRef = useRef(null);
+
+  const navigate = useNavigate();
+  let lastScrollY = window.scrollY;
+
+  useEffect(() => {
+    const nav = navbarRef.current;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      gsap.set(nav, { yPercent: 0 });
+
+      if (currentScrollY > lastScrollY) {
+        //scroll down -> hide
+        gsap.to(nav, {
+          yPercent: -100,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      } else {
+        gsap.to(nav, {
+          yPercent: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 h-[50px]">
+      <nav ref={navbarRef} className="fixed top-0 left-0 w-full z-50 h-[50px]">
         {/* Nav Container  */}
-        <div className="flex justify-between items-center px-6 py-4 bg-[#111111] backdrop-blur-lg border-b border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.15)]">
+        <div className="flex justify-between items-center px-6 bg-[#111111] backdrop-blur-lg border-b border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.15)]">
           {/* Logo  */}
           <span
-            className="text-soloLightBlue flex items-center py-2 h-full cursor-pointer active:text-purple-700 no-underline m-10 drop-shadow-lg"
-            style={{ margin: "8px 16px" }}
+            className="text-soloLightBlue flex items-center py-2 h-full cursor-pointer active:text-purple-700 no-underline my-2 mx-4 drop-shadow-lg"
+            onClick={() => navigate("/")}
           >
-            <span className="text-3xl font-bold">A.D. </span>
+            <span className="text-3xl font-bold">AD</span>
             <span>&nbsp; </span>
             <span className=" text-3xl"> Graphics</span>
           </span>
 
           {/* DESKTOP MENU */}
-          <span
-            className="items-center mr-44 max-sm:hidden sm:flex justify-between w-[30%]"
-            style={{ margin: "8px 16px" }}
-          >
+          <span className="items-center max-sm:hidden sm:flex justify-between w-[30%] my-2 mx-2">
             <NavLink
               // className={({ isActive }) =>
               //   isActive ? "underline text-soloPurple" : activeStyle
@@ -70,8 +102,7 @@ const Navbar = () => {
 
           {/* HAMBURGER  */}
           <button
-            className="md:hidden flex flex-col gap-1.5"
-            style={{ margin: "8px 20px" }}
+            className="md:hidden flex flex-col gap-1.5 my-2 mx-5"
             onClick={() => setIsOpen(!isOpen)}
           >
             <span

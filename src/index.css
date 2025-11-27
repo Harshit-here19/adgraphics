@@ -41,6 +41,15 @@
     }
   }
 
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
@@ -55,6 +64,10 @@
 
   .animate-fadeIn {
     animation: fadeIn 1.4s ease forwards;
+  }
+
+  .animate-scrollLeft {
+    animation: scrollLeft 30s linear infinite;
   }
 
   .text-glow {
