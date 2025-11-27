@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import gwen from "../assets/icons/gwen.jpg"
+import gwen from "../assets/icons/Gwen.jpg"
 import hermione from "../assets/icons/Hermione.png"
 import laptop from "../assets/icons/Laptop.jpg"
 import wonder from "../assets/icons/Wonder.jpeg"
