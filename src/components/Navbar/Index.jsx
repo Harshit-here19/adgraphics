@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center px-6 py-4 bg-[#111111] backdrop-blur-lg border-b border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.15)]">
           {/* Logo  */}
           <span
-            className="text-soloLightBlue flex items-center py-2 h-full cursor-pointer active:text-purple-700ple no-underline m-10 drop-shadow-lg"
+            className="text-soloLightBlue flex items-center py-2 h-full cursor-pointer active:text-purple-700 no-underline m-10 drop-shadow-lg"
             style={{ margin: "8px 16px" }}
           >
             <span className="text-3xl font-bold">A.D. </span>
@@ -33,7 +33,7 @@ const Navbar = () => {
               // }
               className={({ isActive }) =>
                 `text-soloLightBlue text-xl relative pb-1 transition-all ${
-                  isActive ? "after:w-full text-purple-700ple" : "after:w-0"
+                  isActive ? "after:w-full text-purple-700" : "after:w-0"
                 } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
               }
               to="/"
@@ -46,7 +46,7 @@ const Navbar = () => {
               // }
               className={({ isActive }) =>
                 `text-soloLightBlue text-xl relative pb-1 transition-all ${
-                  isActive ? "after:w-full text-purple-700ple" : "after:w-0"
+                  isActive ? "after:w-full text-purple-700" : "after:w-0"
                 } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
               }
               to="/portfolio"
@@ -59,7 +59,7 @@ const Navbar = () => {
               // }
               className={({ isActive }) =>
                 `text-soloLightBlue text-xl relative pb-1 transition-all ${
-                  isActive ? "after:w-full text-purple-700ple" : "after:w-0"
+                  isActive ? "after:w-full text-purple-700" : "after:w-0"
                 } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
               }
               to="/about"
@@ -104,8 +104,8 @@ const Navbar = () => {
           <NavLink
             onClick={() => setIsOpen(false)}
             className={({ isActive }) =>
-              `text-soloLightBlue text-xl relative pb-1 transition-all ${
-                isActive ? "after:w-full text-purple-700ple" : "after:w-0"
+              `text-black text-xl relative pb-1 transition-all ${
+                isActive ? "after:w-full text-glow" : "after:w-0"
               } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
             }
             to="/"
@@ -115,8 +115,8 @@ const Navbar = () => {
           <NavLink
             onClick={() => setIsOpen(false)}
             className={({ isActive }) =>
-              `text-soloLightBlue text-xl relative pb-1 transition-all ${
-                isActive ? "after:w-full text-purple-700ple" : "after:w-0"
+              `text-black text-xl relative pb-1 transition-all ${
+                isActive ? "after:w-full text-glow" : "after:w-0"
               } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
             }
             to="/portfolio"
@@ -126,8 +126,8 @@ const Navbar = () => {
           <NavLink
             onClick={() => setIsOpen(false)}
             className={({ isActive }) =>
-              `text-soloLightBlue text-xl relative pb-1 transition-all ${
-                isActive ? "after:w-full text-purple-700ple" : "after:w-0"
+              `text-black text-xl relative pb-1 transition-all ${
+                isActive ? "after:w-full text-glow" : "after:w-0"
               } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
             }
             to="/about"

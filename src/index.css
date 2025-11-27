@@ -12,18 +12,33 @@
 /* Custom  Animation */
 @layer utilities {
   @keyframes float {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-15px);}
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
   }
 
   @keyframes fadeUp {
-    0% {opacity: 0, transform: translateY(20px); }
-    100% {opacity: 1, transform: translateY(0); }
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes fadeIn {
-    0% {opacity: 0; }
-    100% {opacity: 1; }
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   .animate-float {
@@ -31,11 +46,18 @@
   }
 
   .animate-fadeUp {
-    animation: fadeUp 0.9s ease forwards;
+    /* animation: fadeUp 1.5s ease forwards; */
+    animation-name: fadeUp;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
   }
 
   .animate-fadeIn {
     animation: fadeIn 1.4s ease forwards;
   }
 
+  .text-glow {
+    text-shadow: 0 0 10px #111111, 0 0 20px #111111;
+  }
 }

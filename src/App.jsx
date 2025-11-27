@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Index";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/home";
 import About from "./Pages/about";
+import Portfolio from "./Pages/portfolioPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
     </Router>
   );
