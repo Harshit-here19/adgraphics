@@ -3,10 +3,10 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useNavigate } from "react-router-dom";
 
-import banner from "../assets/icons/banner.jpg";
-import phamplet from "../assets/icons/phamplet.jpg";
-import standee from "../assets/icons/standee.webp";
-import visitingCard from "../assets/icons/visitingCard.jpg";
+import banner from "../assets/icons/banner.JPG";
+import phamplet from "../assets/icons/phamplet.JPG";
+import standee from "../assets/icons/standee.WEBP";
+import visitingCard from "../assets/icons/visitingCard.JPG";
 
 gsap.registerPlugin(ScrollTrigger);
 
