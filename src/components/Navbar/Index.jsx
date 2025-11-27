@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import MobileNav from "./MobileNav";
 
 import { Nav, Bars } from "./NavbarElements";
 
@@ -12,10 +13,15 @@ import { Nav, Bars } from "./NavbarElements";
 const Navbar = () => {
   // const activeStyle =
   //   "text-soloLightBlue flex items-center py-2 h-full cursor-pointer hover:text-soloPurple active:underline no-underline";
+
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <Nav>
-        <Bars />
+        <Bars onClick={() => setIsOpen(!isOpen)} />
+
+        {isOpen && <MobileNav />}
 
         <span className="text-soloLightBlue flex items-center py-2 h-full cursor-pointer active:text-purple-700ple no-underline m-10">
           <span className="text-3xl font-bold">A.D. </span>

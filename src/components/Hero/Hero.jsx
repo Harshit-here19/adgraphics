@@ -2,7 +2,10 @@ import React from "react";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[calc(100dvh - 50px)] bg-white overflow-hidden flex items-center justify-center px-6 md:px-20">
+    <section
+      className="relative w-full bg-white overflow-hidden flex items-center justify-center px-6 md:px-20"
+      style={{ minHeight: `calc(100vh - 64px)` }}
+    >
       {/* Floating Shapes */}
       <div className="absolute top-10 left-10 w-20 h-20 bg-red-500 animate-float"></div>
       <div className="absolue top-0 right-0 w-64 h-64 bg-purple-700 rounded-full translate-x-1/3 -translate-y-1/3 animate-float"></div>
