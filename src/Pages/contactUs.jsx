@@ -5,74 +5,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactUs() {
-  const titleRef = useRef();
+  const titleRef = useRef(null);
   const cardRefs = useRef([]);
   const shapeRefs = useRef([]);
 
- useLayoutEffect(() => {
-  if (!titleRef.current) return;
-
-  // If cards are not rendered yet, skip animation
-  if (!cardRefs.current.length) return;
-
-  // Title animation
-  gsap.fromTo(
-    titleRef.current,
-    { y: 50, opacity: 0 },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: "top 80%",
-        end: "top 70%",
-        toggleActions: "play none none reverse",
-      },
-    }
-  );
-
-  // Cards animation
-  gsap.fromTo(
-    cardRefs.current,
-    { y: 30, opacity: 0 },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: cardRefs.current[0], // SAFE
-        start: "top 85%",
-        end: "bottom 60%",
-        toggleActions: "play none none reverse",
-      },
-    }
-  );
-
-  // Shapes animation (safe check)
-  shapeRefs.current.forEach((shape, i) => {
-    if (!shape) return;
-
-    gsap.to(shape, {
-      y: -20,
-      repeat: -1,
-      yoyo: true,
-      duration: 3 + i * 0.5,
-      ease: "sine.inOut",
-      delay: i * 0.4,
-    });
-  });
-
-  return () => {
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  };
-}, []);
-
-
-  // Helper to add to cardRefs safely
+  // Add refs to array safely
   const addToCardRefs = (el) => {
     if (el && !cardRefs.current.includes(el)) {
       cardRefs.current.push(el);
@@ -83,9 +20,64 @@ export default function ContactUs() {
     shapeRefs.current[index] = el;
   };
 
+  // GSAP Animations
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Title Animation
+      gsap.fromTo(
+        titleRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+
+      // Cards Scroll Animations
+      cardRefs.current.forEach((card) => {
+        gsap.fromTo(
+          card,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+
+      // Floating background shapes
+      shapeRefs.current.forEach((shape, i) => {
+        if (!shape) return;
+        gsap.to(shape, {
+          y: -25,
+          repeat: -1,
+          yoyo: true,
+          duration: 3 + i,
+          ease: "sine.inOut",
+        });
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="relative min-h-screen bg-slate-900 text-white overflow-hidden">
-      {/* Animated Background Shapes */}
+      {/* Floating Shapes */}
       <div className="absolute inset-0 z-0">
         <div
           ref={addToShapeRefs(0)}
@@ -125,38 +117,41 @@ export default function ContactUs() {
             Connect
           </span>
         </h1>
+
         <p className="text-xl text-center text-gray-300 mb-20 max-w-3xl mx-auto leading-relaxed">
-          Reach out for creative collaborations, brand partnerships, or just to say hello. We love building meaningful connections.
+          Reach out for creative collaborations, brand partnerships, or just to
+          say hello. We love building meaningful connections.
         </p>
 
-        {/* Info Cards Grid */}
+        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {/* Studio Info */}
           <div
             ref={addToCardRefs}
-            className="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl opacity-0"
+            className="opacity-0 group bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105"
           >
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
               <span className="w-2 h-2 bg-linear-to-r from-cyan-400 to-blue-500 rounded-full"></span>
               Our Studio
             </h2>
+
             <div className="space-y-4 text-gray-200">
               <p className="flex items-start gap-3">
                 <span className="text-cyan-400 mt-1">📍</span>
                 <span>
-                  <strong className="text-white">PixelForge Studio</strong>
+                  <strong className="text-white">AD Graphics</strong>
                   <br />
-                  88 Creative Loop, Design District<br />
+                  88 Creative Loop, Design District
+                  <br />
                   Vision City, VC 75001
                 </span>
               </p>
               <p className="flex items-center gap-3">
-                <span className="text-cyan-400">📞</span>
-                <span>+1 (888) 777-6666</span>
+                <span className="text-cyan-400">📞</span> +91 976 007 7223
               </p>
               <p className="flex items-center gap-3">
-                <span className="text-cyan-400">✉️</span>
-                <span>studio@pixelforge.design</span>
+                <span className="text-cyan-400">✉️</span>{" "}
+                adgraphicsagra007@gmail.com
               </p>
             </div>
           </div>
@@ -164,16 +159,20 @@ export default function ContactUs() {
           {/* Hours */}
           <div
             ref={addToCardRefs}
-            className="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl opacity-0"
+            className="opacity-0 group bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105"
           >
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
               <span className="w-2 h-2 bg-linear-to-r from-purple-400 to-pink-500 rounded-full"></span>
               Studio Hours
             </h2>
+
             <div className="space-y-3 text-gray-200">
               {[
-                { days: "Monday – Friday", time: "9:00 AM – 6:00 PM", open: true },
-                { days: "Saturday", time: "10:00 AM – 4:00 PM", open: true },
+                {
+                  days: "Monday – Saturday",
+                  time: "10:00 AM – 8:00 PM",
+                  open: true,
+                },
                 { days: "Sunday", time: "Closed", open: false },
               ].map((item, i) => (
                 <div
@@ -182,7 +181,7 @@ export default function ContactUs() {
                 >
                   <span>{item.days}</span>
                   <span
-                    className={`font-medium ${
+                    className={`${
                       item.open ? "text-green-400" : "text-red-400"
                     }`}
                   >
@@ -196,14 +195,15 @@ export default function ContactUs() {
           {/* Services */}
           <div
             ref={addToCardRefs}
-            className="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl opacity-0"
+            className="opacity-0 group bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105"
           >
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
               <span className="w-2 h-2 bg-linear-to-r from-yellow-400 to-orange-500 rounded-full"></span>
               We Specialize In
             </h2>
+
             <div className="flex flex-wrap gap-3">
-              {["Branding", "UI/UX", "Motion Design", "Print", "Web Dev", "Packaging"].map(
+              {["Flex", "Business Card", "Phamplet", "Poster", "Standee"].map(
                 (service, i) => (
                   <span
                     key={i}
@@ -219,30 +219,28 @@ export default function ContactUs() {
           {/* Socials */}
           <div
             ref={addToCardRefs}
-            className="group bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl opacity-0"
+            className="opacity-0 group bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105"
           >
             <h2 className="text-2xl font-semibold mb-6 flex items-center gap-3">
               <span className="w-2 h-2 bg-linear-to-r from-green-400 to-teal-500 rounded-full"></span>
               Follow Our Journey
             </h2>
+
             <div className="flex gap-6">
               {[
-                { name: "Instagram", color: "hover:bg-pink-500", icon: "📸" },
-                { name: "Dribbble", color: "hover:bg-red-500", icon: "🎯" },
-                { name: "LinkedIn", color: "hover:bg-blue-600", icon: "💼" },
-                { name: "Behance", color: "hover:bg-purple-600", icon: "🎨" },
+                { name: "Instagram", icon: "📸" },
+                { name: "Dribbble", icon: "🎯" },
+                { name: "LinkedIn", icon: "💼" },
+                { name: "Behance", icon: "🎨" },
               ].map((social, i) => (
                 <a
                   key={i}
-                  href={`https://www.${social.name.toLowerCase()}.com/pixelforge`}
+                  href={`https://www.${social.name.toLowerCase()}.com`}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Follow us on ${social.name}`}
-                  className={`flex flex-col items-center gap-2 text-gray-300 hover:text-white transition-all ${social.color} p-3 rounded-xl group`}
+                  className="flex flex-col items-center gap-2 text-gray-300 hover:text-white p-3 rounded-xl transition-all"
                 >
-                  <span className="text-2xl group-hover:scale-110 transition-transform">
-                    {social.icon}
-                  </span>
+                  <span className="text-2xl">{social.icon}</span>
                   <span className="text-sm font-medium">{social.name}</span>
                 </a>
               ))}
@@ -250,7 +248,7 @@ export default function ContactUs() {
           </div>
         </div>
 
-        {/* Decorative Divider */}
+        {/* Divider */}
         <div className="mt-16 flex justify-center">
           <div className="w-20 h-1 bg-linear-to-r from-transparent via-cyan-500 to-transparent rounded-full"></div>
         </div>
