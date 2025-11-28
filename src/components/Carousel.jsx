@@ -19,8 +19,8 @@ export const Carousel = ({location, label, animationTime}) => {
           </h2>
 
           <div className="flex gap-8 opacity-0 animate-[fadeUp_0.5s_ease-in_1300ms_forwards] overflow-hidden w-[90%] bg-black/5 backdrop-blur-lg border border-black/10 p-4 rounded-xl hover:bg-black/10 transition">
-            <div className={`flex gap-5 w-max animate-scrollLeft hover:[animation-play-state:paused]`}
-            style={{ "--speed": `${animationTime}s` }}
+            <div className={`flex gap-5 w-max animate-scrollLeft hover:[animation-play-state:paused] sm:[--speed:var(--baseSpeed)] [--speed:calc(var(--baseSpeed)*2)] `}
+            style={{ "--baseSpeed": `${animationTime}s` }}
             >
               {carouselList}
             </div>

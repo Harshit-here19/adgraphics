@@ -1,6 +1,6 @@
 // import react from "react";
 
-import { Carousel } from "../components/Carousell";
+import { Carousel } from "../components/Carousel";
 
 const PortfolioPage = () => {
   return (
@@ -15,7 +15,7 @@ const PortfolioPage = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl lg:text-5xl font-light text-gray-900 mb-6 animate-fadeIn">
               Simple. Beautiful.
-              <span className="block text-gray-400">Effective.</span>
+              <span className="block text-gray-500 mt-6">Effective.</span>
             </h2>
 
             <p
