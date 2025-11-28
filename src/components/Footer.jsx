@@ -4,7 +4,7 @@ import { FcCellPhone, FcInvite } from "react-icons/fc";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-3">
+    <footer className="bg-gray-900 z-30 text-white py-3">
       <div className="max-w-6xl mx-auto px-4 flex flex-col justify-center items-center">
         {/* Contact Info */}
         <div>

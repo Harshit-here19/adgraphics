@@ -1,8 +1,6 @@
-// filename -App.js
-
-import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Index";
+import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/home";
 import About from "./Pages/about";
@@ -17,6 +15,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
