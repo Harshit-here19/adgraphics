@@ -1,5 +1,4 @@
 import React from "react";
-import HorizontalScroll from "../components/HorizintalScroll";
 import img1 from "../assets/carousel/img1.jpg";
 import img2 from "../assets/carousel/img2.jpg";
 import img3 from "../assets/carousel/img3.jpg";
@@ -9,7 +8,6 @@ const About = () => {
   return (
     <div>
       <h1 className="text-3xl font-bold text-white bg-blue-400">AD Graphics</h1>
-      <HorizontalScroll />
       {/* -------- Gallery Section -------- */}
         <section className="overflow-hidden w-full my-20 mx-8 relative">
           <h2 className="text-3xl font-semibold mb-8 portfolio-text opacity-0 animate-[fadeUp_0.5s_ease-in_1200ms_forwards] after:bg-black after:h-1 after:rounded-2xl after:w-[70%] after:top-1/2 after:absolute after:ml-4">

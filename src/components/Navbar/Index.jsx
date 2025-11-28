@@ -60,9 +60,6 @@ const Navbar = () => {
           {/* DESKTOP MENU */}
           <span className="items-center max-sm:hidden sm:flex justify-between w-[30%] my-2 mx-2">
             <NavLink
-              // className={({ isActive }) =>
-              //   isActive ? "underline text-soloPurple" : activeStyle
-              // }
               className={({ isActive }) =>
                 `text-soloLightBlue text-xl relative pb-1 transition-all ${
                   isActive ? "after:w-full text-purple-700" : "after:w-0"
@@ -73,9 +70,6 @@ const Navbar = () => {
               Home
             </NavLink>
             <NavLink
-              // className={({ isActive }) =>
-              //   isActive ? "underline text-soloPurple after:w-0" : activeStyle
-              // }
               className={({ isActive }) =>
                 `text-soloLightBlue text-xl relative pb-1 transition-all ${
                   isActive ? "after:w-full text-purple-700" : "after:w-0"
@@ -86,9 +80,6 @@ const Navbar = () => {
               Portfolio
             </NavLink>
             <NavLink
-              // className={({ isActive }) =>
-              //   isActive ? "underline text-soloPurple after:w-0" : activeStyle
-              // }
               className={({ isActive }) =>
                 `text-soloLightBlue text-xl relative pb-1 transition-all ${
                   isActive ? "after:w-full text-purple-700" : "after:w-0"
@@ -97,6 +88,16 @@ const Navbar = () => {
               to="/about"
             >
               About
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `text-soloLightBlue text-xl relative pb-1 transition-all ${
+                  isActive ? "after:w-full text-purple-700" : "after:w-0"
+                } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
+              }
+              to="/contact"
+            >
+              Contact Us
             </NavLink>
           </span>
 
@@ -164,6 +165,17 @@ const Navbar = () => {
             to="/about"
           >
             About
+          </NavLink>
+          <NavLink
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) =>
+              `text-black text-xl relative pb-1 transition-all ${
+                isActive ? "after:w-full text-glow" : "after:w-0"
+              } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
+            }
+            to="/contact"
+          >
+            Contact Us
           </NavLink>
         </div>
       </nav>

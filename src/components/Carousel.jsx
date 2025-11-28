@@ -2,12 +2,12 @@ import React from 'react'
 
 export const Carousel = ({location, label, animationTime}) => {
     const carouselList = [];
-  for (let i = 1; i <= 16; i++) {
+  for (let i = 1; i <= 24; i++) {
     carouselList.push(
       <img
         key={i}
-        src={`/images/${location}/img${i < 9 ? i : i - 8}.jpg`}
-        className="rounded-lg w-96 h-72 object-cover hover:scale-105 shrink-0"
+        src={`/images/${location}/img${i < 13 ? i : i - 12}.jpg`}
+        className="rounded-lg w-96 h-72 object-contain hover:scale-105 shrink-0"
       />
     );
   }
