@@ -6,6 +6,19 @@ import img3 from "../assets/carousel/img3.jpg";
 import img4 from "../assets/carousel/img4.jpg";
 
 const PortfolioPage = () => {
+  const visitingCardList = [];
+  for (let i = 1; i <= 8; i++) {
+    visitingCardList.push(
+      <img
+        key={i}
+        src={`/images/visitingCards/img${i < 5 ? i : i - 4}.jpg`}
+        className={`rounded-lg w-full h-90 object-cover hover:scale-115 animate-[slideRotate_0.5s_ease-in-out_${
+          i * 500
+        }ms_infinite]`}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#0b0b0f] text-white h-fit relative">
       {/* --- Neon Circle Background Effects --- */}
@@ -16,7 +29,7 @@ const PortfolioPage = () => {
       {/* Page Wrapper */}
       <div className=" z-10 max-w-screen mx-auto px-6 py-20">
         {/* -------- Featured Work Section -------- */}
-        <section className="my-20 mx-10">
+        <section className="my-5 mx-10">
           <h2 className="text-3xl font-semibold mb-3  opacity-0 animate-[fadeUp_0.5s_ease-in_forwards]">
             Featured Work
           </h2>
@@ -29,7 +42,7 @@ const PortfolioPage = () => {
               <img
                 src="/images/landscape.png"
                 alt="Landscape"
-                className="rounded-md w-full h-56 object-cover"
+                className="rounded-md w-full h-90 object-cover"
               />
               <h3 className="text-xl font-semibold mt-4">Landscape</h3>
             </div>
@@ -46,48 +59,58 @@ const PortfolioPage = () => {
         </section>
 
         {/* -------- Gallery Section -------- */}
-        <section
-          className="overflow-hidden w-full"
-          style={{ margin: "5rem 2rem" }}
-        >
+        <section className="overflow-hidden w-full my-20 mx-8 relative">
+          <h2 className="text-3xl font-semibold mb-8 portfolio-text opacity-0 animate-[fadeUp_0.5s_ease-in_1200ms_forwards] after:bg-white after:h-1 after:rounded-2xl after:w-[70%] after:top-1/2 after:absolute after:ml-4">
+            Project Gallery
+          </h2>
+
+          <div className="flex gap-8 opacity-0 animate-[fadeUp_0.5s_ease-in_1300ms_forwards] overflow-hidden w-[90%] bg-[#0b0b0f]">
+            <div className="flex gap-5 w-max animate-[scrollLeft_10s_linear_infinite] hover:[animation-play-state:paused]">
+              <img
+                src={img1}
+                className="rounded-lg w-full h-90 object-contain hover:scale-105"
+              />
+              <img
+                src={img2}
+                className="rounded-lg w-full h-90 object-contain hover:scale-105"
+              />
+              <img
+                src={img3}
+                className="rounded-lg w-full h-90 object-contain hover:scale-105"
+              />
+              <img
+                src={img4}
+                className="rounded-lg w-full h-90 object-contain hover:scale-105"
+              />
+              <img
+                src={img1}
+                className="rounded-lg w-full h-90 object-contain hover:scale-105"
+              />
+              <img
+                src={img2}
+                className="rounded-lg w-full h-90 object-contain hover:scale-105"
+              />
+              <img
+                src={img3}
+                className="rounded-lg w-full h-90 object-contain hover:scale-105"
+              />
+              <img
+                src={img4}
+                className="rounded-lg w-full h-90 object-contain hover:scale-105"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* -------- Gallery Section -------- */}
+        <section className="overflow-hidden w-full my-20 mx-8">
           <h2 className="text-3xl font-semibold mb-8 portfolio-text opacity-0 animate-[fadeUp_0.5s_ease-in_1200ms_forwards]">
             Project Gallery
           </h2>
 
-          <div className="flex gap-8 opacity-0 animate-[fadeUp_0.5s_ease-in_1300ms_forwards] overflow-hidden w-[90%] bg-black">
-            <div className="flex gap-5 w-max animate-[scrollLeft_30s_linear_infinite] ">
-              <img
-                src={img1}
-                className="rounded-lg w-full h-56 object-contain"
-              />
-              <img
-                src={img2}
-                className="rounded-lg w-full h-56 object-contain"
-              />
-              <img
-                src={img3}
-                className="rounded-lg w-full h-56 object-contain"
-              />
-              <img
-                src={img4}
-                className="rounded-lg w-full h-56 object-contain"
-              />
-              <img
-                src={img1}
-                className="rounded-lg w-full h-56 object-contain"
-              />
-              <img
-                src={img2}
-                className="rounded-lg w-full h-56 object-contain"
-              />
-              <img
-                src={img3}
-                className="rounded-lg w-full h-56 object-contain"
-              />
-              <img
-                src={img4}
-                className="rounded-lg w-full h-56 object-contain"
-              />
+          <div className="flex gap-8 opacity-0 animate-[fadeUp_0.5s_ease-in_1300ms_forwards] overflow-hidden w-[90%] bg-[#0b0b0f]">
+            <div className="flex gap-5 w-max animate-slideRotat hover:[animation-play-state:paused]">
+              {visitingCardList}
             </div>
           </div>
         </section>
