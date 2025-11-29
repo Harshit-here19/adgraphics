@@ -1,3 +1,4 @@
+// Portfolio.jsx
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -57,20 +58,21 @@ const Portfolio = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-screen min-h-screen h-auto bg-[#111116] text-white flex max-sm:flex-col items-center justify-between overflow-x-hidden relative py-8"
+      className="w-screen min-h-screen h-auto bg-linear-to-br from-blue-50 via-purple-50 to-pink-50 text-gray-900 flex max-sm:flex-col items-center justify-between overflow-x-hidden relative py-8"
     >
-      {/* Background blobs */}
-      <div className="absolute -left-20 top-40 w-72 h-72 bg-teal-600 rounded-full opacity-20 blur-2xl"></div>
-      <div className="absolute right-10 top-10 w-64 h-64 bg-indigo-700 rounded-full opacity-20 blur-2xl"></div>
-      <div className="absolute right-0 bottom-0 w-80 h-80 bg-yellow-400 rounded-full opacity-20 blur-2xl"></div>
+      {/* Background colorful shapes */}
+      <div className="absolute -left-20 top-40 w-72 h-72 bg-linear-to-r from-teal-400 to-cyan-300 rounded-full opacity-30 blur-3xl"></div>
+      <div className="absolute right-10 top-10 w-64 h-64 bg-linear-to-r from-indigo-400 to-purple-300 rounded-full opacity-30 blur-3xl"></div>
+      <div className="absolute right-0 bottom-0 w-80 h-80 bg-linear-to-r from-yellow-300 to-orange-300 rounded-full opacity-30 blur-3xl"></div>
+      <div className="absolute left-1/3 top-1/4 w-48 h-48 bg-linear-to-r from-pink-300 to-rose-300 rounded-full opacity-30 blur-3xl"></div>
 
       {/* LEFT SIDE */}
       <div className="portfolio-text max-w-lg py-4 ml-4 max-h-1/2 max-sm:max-h-full max-sm:mb-6 max-sm:mt-6 sm:ml-24">
         <h1 className="text-6xl font-bold pb-2">Portfolio</h1>
-        <p className="text-gray-300 text-xl mb-4">A selection of our work.</p>
+        <p className="text-gray-700 text-xl mb-4">A selection of our work.</p>
 
         <button
-          className="bg-[#0a7aff] hover:scale-105 transition rounded-full font-medium text-lg py-2 px-4"
+          className="bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white hover:scale-105 transition rounded-full font-medium text-lg py-2 px-6 shadow-lg"
           onClick={() => navigate("/portfolio")}
         >
           View More
@@ -79,13 +81,13 @@ const Portfolio = () => {
 
       {/* RIGHT SIDE GRID */}
       <div
-        className="grid md:grid-cols-2 grid-cols-1 gap-4 h-auto max-w-[60%] max-sm:max-h-full mr-12"
+        className="grid md:grid-cols-2 grid-cols-1 gap-8 h-auto max-w-[60%] max-sm:max-h-full mr-12"
       >
         {items.map((item, i) => (
           <div
             key={i}
             ref={(el) => (cardsRef.current[i] = el)}
-            className={`bg-[#1b1c20] w-90 max-md:w-[90vw] h-52 rounded-lg flex items-end relative overflow-x-hidden hover:scale-105 transition-transform hover:-translate-y-2 hover:shadow-md hover:shadow-blue-400 ${
+            className={`bg-white/80 backdrop-blur-sm w-90 max-md:w-[90vw] h-52 rounded-xl flex items-end relative overflow-x-hidden border border-white/50 shadow-lg hover:scale-105 transition-transform hover:-translate-y-2 hover:shadow-xl ${
               i == 3 ? "mb-8" : ""
             }`}
           >
@@ -94,9 +96,9 @@ const Portfolio = () => {
             >
               <img
                 src={item.img}
-                className="w-full h-[90%] opacity-80 object-cover"
+                className="w-full h-[90%] opacity-90 object-cover rounded-t-xl"
               />
-              <p className="text-lg font-medium center mt-1 mb-4">
+              <p className="text-lg font-medium center mt-1 mb-4 text-gray-800">
                 {item.title}
               </p>
             </div>
