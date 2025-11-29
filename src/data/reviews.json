@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "name": "Harshit Sikarwar",
+    "email": "sarah@example.com",
+    "rating": 5,
+    "title": "Exceptional Service!",
+    "review": "The team went above and beyond to deliver our project on time. Their attention to detail and commitment to quality is unmatched. Highly recommend!",
+    "date": "2024-01-15",
+    "avatar": null,
+    "verified": true
+  }
+]

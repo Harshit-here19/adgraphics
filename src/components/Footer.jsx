@@ -11,8 +11,7 @@ const Footer = () => {
           <p className="text-sm text-gray-400 flex items-center max-md:hidden">
             <FcCellPhone /> &nbsp; +91-9760077223 | &nbsp;&nbsp;
             <FcInvite /> &nbsp; adgraphicsagra007@gmail.com | &nbsp;&nbsp;
-            <MdLocationOn /> &nbsp; B-42,Basement, Sky Tower, Sanjay Palace,
-            Agra &nbsp;&nbsp;
+            <MdLocationOn /> &nbsp; 40B/232, Sky Tower, Sanjay Place, Agra &nbsp;&nbsp;
           </p>
 
           <p className="text-sm text-gray-400 flex items-center md:hidden">
