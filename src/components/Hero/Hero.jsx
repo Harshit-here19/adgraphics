@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
+  
   return (
     <section
       className="relative w-full bg-white overflow-hidden flex items-center justify-center px-6 md:px-20"
@@ -41,6 +44,7 @@ export default function Hero() {
         <button
           className="mt-8 bg-[#0a7aff] text-white font-semibold rounded-full  opacity-0 animate-[fadeIn_0.5s_ease-in_1500ms_forwards] hover:scale-105 transition"
           style={{ padding: "0.5rem 1rem" }}
+          onClick={() => navigate("/contact")}
         >
           Contact Us
         </button>

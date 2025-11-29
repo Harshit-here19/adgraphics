@@ -100,9 +100,7 @@ const About = () => {
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
               >
-                We are a team of passionate innovators dedicated to transforming ideas into reality. 
-                With over a decade of experience in our field, we've helped hundreds of businesses 
-                achieve their goals through creative solutions and strategic thinking.
+                At AD Graphics, we specialize in delivering high-quality printing solutions that bring your ideas to life. From flex banners, business cards, pamphlets, posters, and standees to a wide variety of media options, we provide creative and professional printing services tailored to your needs.
               </p>
               
               <p 
@@ -110,10 +108,7 @@ const About = () => {
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
               >
-                Our mission is to empower businesses through technology and design. We believe in 
-                building long-term relationships based on trust, quality, and exceptional service. 
-                Every project we undertake is approached with fresh perspective and meticulous 
-                attention to detail.
+                Our goal is to help businesses, brands, and individuals make a lasting impression. Whether you need eye-catching promotional materials or elegant business stationery, we combine the latest technology with expert craftsmanship to ensure every print stands out.
               </p>
               
               {/* Stats */}
@@ -227,8 +222,7 @@ const About = () => {
       </div>
     </section>
 
-    <CustomerReviews />
-    
+    {/* <CustomerReviews />     */}
     </>
   );
 };

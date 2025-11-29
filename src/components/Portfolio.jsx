@@ -71,7 +71,7 @@ const Portfolio = () => {
 
         <button
           className="bg-[#0a7aff] hover:scale-105 transition rounded-full font-medium text-lg py-2 px-4"
-          onCick={() => navigate("/portfolio")}
+          onClick={() => navigate("/portfolio")}
         >
           View More
         </button>
@@ -79,8 +79,7 @@ const Portfolio = () => {
 
       {/* RIGHT SIDE GRID */}
       <div
-        className="flex flex-wrap gap-4 h-auto max-w-[60%] max-sm:max-h-full"
-        // style={{ margin: "0 3rem" }}
+        className="grid md:grid-cols-2 grid-cols-1 gap-4 h-auto max-w-[60%] max-sm:max-h-full mr-12"
       >
         {items.map((item, i) => (
           <div
