@@ -29,7 +29,7 @@ const Modal = ({ isOpen, item, onClose }) => {
 
   return (
     <div 
-      className={`fixed inset-0 bg-black flex items-center justify-center z-50 p-4 transition-opacity duration-300 ${
+      className={`fixed inset-0 flex items-center justify-center z-50 p-4 transition-opacity duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
       onClick={onClose}

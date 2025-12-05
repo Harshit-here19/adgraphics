@@ -21,45 +21,17 @@ export const Carousel = ({ location, label }) => {
 
   return (
     // <div className="flex items-center justify-center min-h-screen bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
-    <div className="flex items-center justify-center min-h-screen p-4 my-12">
+    <div className="flex items-center justify-center min-h-screen p-4 my-6">
       <div className="max-w-6xl w-full mx-auto">
-        <h1
-          className="
-  text-4xl md:text-5xl lg:text-6xl 
-  font-bold 
-  text-center 
-  mb-8 
-  tracking-tight
-  bg-gradient-to-r 
-  from-slate-800 
-  to-slate-600 
-  bg-clip-text 
-  text-transparent
-  relative
-  inline-block
-  after:content-[''] 
-  after:absolute 
-  after:w-24 
-  after:h-1 
-  after:bg-gradient-to-r 
-  after:from-purple-500 
-  after:to-pink-500 
-  after:rounded-full 
-  after:bottom-[-8px] 
-  after:left-1/2 
-  after:transform 
-  after:-translate-x-1/2
-  hover:after:scale-x-150
-  hover:after:bg-gradient-to-r 
-  hover:after:from-pink-500 
-  hover:after:to-purple-500
-  transition-all 
-  duration-500
-  drop-shadow-sm
-"
-        >
-          {label}
-        </h1>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center mb-8 relative px-6">
+  {/* Subtle Gradient Glow Behind Text */}
+  <span className="relative z-10 bg-linear-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
+    {label}
+  </span>
+  
+  {/* Animated Underline Glow */}
+  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-full blur-sm opacity-70 animate-pulse"></div>
+</h1>
 
         <div className="relative max-w-3xl mx-auto">
           <Swiper
@@ -106,7 +78,7 @@ export const Carousel = ({ location, label }) => {
             ))}
           </Swiper>
 
-          <style jsx>{`
+          <style>{`
             .my-swiper {
               width: 100%;
               padding: 60px 0;
