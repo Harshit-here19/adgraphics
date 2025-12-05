@@ -41,7 +41,7 @@ export const Carousel = ({ location, label }) => {
             slidesPerView={"auto"}
             loop={true}
             autoplay={{
-              delay: 2500,
+              delay: 2000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
@@ -67,7 +67,7 @@ export const Carousel = ({ location, label }) => {
                   <img
                     src={image}
                     alt={`Slide ${index + 1}`}
-                    className="w-full h-72 sm:h-80 object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-72 sm:h-80 object-center transition-transform duration-700 group-hover:scale-105 object-contain"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
                   <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">

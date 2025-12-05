@@ -148,7 +148,7 @@ export default function ContactUs() {
               {[
                 {
                   days: "Monday – Saturday",
-                  time: "10:00 AM – 8:00 PM",
+                  time: "10:30 AM – 7:30 PM",
                   open: true,
                 },
                 { days: "Sunday", time: "Closed", open: false },

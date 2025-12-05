@@ -103,7 +103,7 @@ export default function ShopMap() {
                           d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                         />
                       </svg>
-                      Sanjay Palace, Civil Lines, Agra
+                      40-B/232, Sky Tower, Sanjay Palace, Agra
                     </p>
                     <p className="text-gray-700 flex items-center mb-1">
                       <svg
@@ -137,7 +137,7 @@ export default function ShopMap() {
                           d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
-                      Open: Mon-Sat 9AM-8PM
+                      Open: Mon-Sat 10:30AM-07:30PM
                     </p>
                   </div>
 
@@ -183,11 +183,11 @@ export default function ShopMap() {
             <div className="flex space-x-4">
               <div className="text-center animate-pulse-slow">
                 <p className="font-bold text-lg">Mon-Fri</p>
-                <p className="text-indigo-100">9AM-8PM</p>
+                <p className="text-indigo-100">10:00AM-7:30PM</p>
               </div>
               <div className="text-center animate-pulse-slow">
                 <p className="font-bold text-lg">Sat</p>
-                <p className="text-indigo-100">10AM-6PM</p>
+                <p className="text-indigo-100">10:00AM-7:30PM</p>
               </div>
               <div className="text-center animate-pulse-slow">
                 <p className="font-bold text-lg">Sun</p>
@@ -229,7 +229,7 @@ export default function ShopMap() {
           <div>
             <h4 className="font-semibold text-gray-800">Address</h4>
             <p className="text-gray-600 text-sm">
-              Shop 123, Sanjay Palace, Agra
+              40-B/232, Sky Tower, Sanjay Palace, Agra
             </p>
           </div>
         </div>
