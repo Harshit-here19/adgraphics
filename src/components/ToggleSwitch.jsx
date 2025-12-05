@@ -12,7 +12,7 @@ const ToggleSwitch = ({ option1, option2, onChange }) => {
     <div className="relative flex bg-gray-100 rounded-2xl p-1.5 shadow-inner">
       {/* Animated Background */}
       <div
-        className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl shadow-lg transition-all duration-500 ease-out ${
+        className={`absolute top-1.5 bottom-1.5 w-[calc(50%-6px)] bg-linear-to-r from-indigo-500 to-purple-600 rounded-xl shadow-lg transition-all duration-500 ease-out ${
           isFirst ? 'left-1.5' : 'left-[calc(50%+3px)]'
         }`}
       />
