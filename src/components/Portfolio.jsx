@@ -80,14 +80,12 @@ const Portfolio = () => {
       </div>
 
       {/* RIGHT SIDE GRID */}
-      <div
-        className="grid md:grid-cols-2 grid-cols-1 gap-8 h-auto max-w-[60%] max-sm:max-h-full mr-12"
-      >
+      <div className="flex flex-wrap gap-4 h-auto min-w-[60%] max-sm:min-h-full">
         {items.map((item, i) => (
           <div
             key={i}
             ref={(el) => (cardsRef.current[i] = el)}
-            className={`bg-white/80 backdrop-blur-sm w-90 max-md:w-[90vw] h-52 rounded-xl flex items-end relative overflow-x-hidden border border-white/50 shadow-lg hover:scale-105 transition-transform hover:-translate-y-2 hover:shadow-xl ${
+            className={`bg-white/80 backdrop-blur-sm w-[45%] max-md:w-[90vw] h-52 rounded-xl flex items-end relative overflow-x-hidden border border-white/50 shadow-lg hover:scale-105 transition-transform hover:-translate-y-2 hover:shadow-xl ${
               i == 3 ? "mb-8" : ""
             }`}
           >
@@ -97,6 +95,7 @@ const Portfolio = () => {
               <img
                 src={item.img}
                 className="w-full h-[90%] opacity-90 object-cover rounded-t-xl"
+                loading="lazy"
               />
               <p className="text-lg font-medium center mt-1 mb-4 text-gray-800">
                 {item.title}

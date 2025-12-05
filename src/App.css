@@ -45,7 +45,8 @@ body {
 }
 
 @keyframes pulseSlow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -86,4 +87,5 @@ body {
 
 .animate-pulse-slow {
   animation: pulseSlow 2s ease-in-out infinite;
-} 
+}
+

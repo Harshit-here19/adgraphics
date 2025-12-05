@@ -146,7 +146,11 @@ export default function ContactUs() {
 
             <div className="space-y-3 text-gray-200">
               {[
-                { days: "Monday – Saturday", time: "10:00 AM – 8:00 PM", open: true },
+                {
+                  days: "Monday – Saturday",
+                  time: "10:00 AM – 8:00 PM",
+                  open: true,
+                },
                 { days: "Sunday", time: "Closed", open: false },
               ].map((item, i) => (
                 <div
@@ -154,7 +158,9 @@ export default function ContactUs() {
                   className="flex justify-between items-center p-3 rounded-xl bg-black/20"
                 >
                   <span>{item.days}</span>
-                  <span className={item.open ? "text-green-400" : "text-red-400"}>
+                  <span
+                    className={item.open ? "text-green-400" : "text-red-400"}
+                  >
                     {item.time}
                   </span>
                 </div>
