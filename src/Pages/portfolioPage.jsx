@@ -53,13 +53,15 @@ const PortfolioPage = () => {
           </div>
         </section>
 
+        <hr />
+
         {/* Visiting Card */}
-        <Carousel location="visitingCards" label="Visiting Cards" animationTime={30} />
+        <Carousel location="visitingCards" label="Visiting Cards" />
+
+        <hr />
 
         {/* Banner */}
-        <Carousel location="banners" label="Banners" animationTime={20} />
-
-        
+        <Carousel location="banners" label="Banners" />
       </div>
     </div>
   );

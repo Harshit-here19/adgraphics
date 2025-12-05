@@ -1,92 +1,198 @@
-// Carousel.jsx
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  EffectCoverflow,
+  Navigation,
+  Pagination,
+  Autoplay,
+} from "swiper/modules";
 
-export const Carousel = ({ location, label, animationTime }) => {
-  const carouselList = [];
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+export const Carousel = ({ location, label }) => {
+  const images = [];
   for (let i = 1; i <= 24; i++) {
-    carouselList.push(
-      <div
-        key={i}
-        className="relative group overflow-hidden rounded-2xl w-80 h-64 shrink-0 shadow-lg hover:shadow-2xl transition-all duration-500"
-      >
-        <img
-          src={`/images/${location}/img${i < 13 ? i : i - 12}.jpg`}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          alt={`Portfolio item ${i}`}
-        />
-        <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
-          <div className="text-white transform translate-y-5 group-hover:translate-y-0 transition-transform duration-500">
-            <h3 className="font-bold text-lg">
-              {label} {i}
-            </h3>
-            <p className="text-sm opacity-80">Design & Development</p>
-          </div>
-        </div>
-      </div>
-    );
+    images.push(`/images/${location}/img${i < 13 ? i : i - 12}.jpg`);
   }
 
   return (
-    <section className="py-20 px-4 sm:px-8">
-      <div className="max-w-7xl mx-auto relative">
-        <div className="text-center py-12">
-          <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-indigo-500 to-purple-600">
-            {label}
-          </h2>
-          <div className="mt-4 w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
-        </div>
+    // <div className="flex items-center justify-center min-h-screen bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
+    <div className="flex items-center justify-center min-h-screen p-4 my-12">
+      <div className="max-w-6xl w-full mx-auto">
+        <h1
+          className="
+  text-4xl md:text-5xl lg:text-6xl 
+  font-bold 
+  text-center 
+  mb-8 
+  tracking-tight
+  bg-gradient-to-r 
+  from-slate-800 
+  to-slate-600 
+  bg-clip-text 
+  text-transparent
+  relative
+  inline-block
+  after:content-[''] 
+  after:absolute 
+  after:w-24 
+  after:h-1 
+  after:bg-gradient-to-r 
+  after:from-purple-500 
+  after:to-pink-500 
+  after:rounded-full 
+  after:bottom-[-8px] 
+  after:left-1/2 
+  after:transform 
+  after:-translate-x-1/2
+  hover:after:scale-x-150
+  hover:after:bg-gradient-to-r 
+  hover:after:from-pink-500 
+  hover:after:to-purple-500
+  transition-all 
+  duration-500
+  drop-shadow-sm
+"
+        >
+          {label}
+        </h1>
 
-        <div className="relative group">
-          {/* Navigation Arrows */}
-          <button className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-gray-800"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
+        <div className="relative max-w-3xl mx-auto">
+          <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={"auto"}
+            loop={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            coverflowEffect={{
+              rotate: 30,
+              stretch: 15,
+              depth: 300,
+              modifier: 2,
+              slideShadows: true,
+            }}
+            speed={1000}
+            navigation={true}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            modules={[EffectCoverflow, Navigation, Pagination, Autoplay]}
+            className="my-swiper"
+          >
+            {images.map((image, index) => (
+              <SwiperSlide key={index} className="swiper-slide-custom">
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl transform-gpu transition-all duration-700 hover:scale-[1.03] hover:shadow-3xl group">
+                  <img
+                    src={image}
+                    alt={`Slide ${index + 1}`}
+                    className="w-full h-72 sm:h-80 object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-80"></div>
+                  <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="w-16 h-1 bg-linear-to-r from-purple-400 to-pink-400 rounded-full"></div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-          <button className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-gray-800"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
+          <style jsx>{`
+            .my-swiper {
+              width: 100%;
+              padding: 60px 0;
+            }
 
-          {/* Carousel Container */}
-          <div className="overflow-hidden py-4">
-            <div
-              className="flex gap-6 w-max animate-scrollLeft hover:[animation-play-state:paused]"
-              style={{ "--baseSpeed": `${animationTime}s` }}
-            >
-              {[...carouselList, ...carouselList]}
-            </div>
-          </div>
+            .swiper-slide-custom {
+              width: 85%;
+              max-width: 550px;
+            }
 
-          {/* Gradient Overlays */}
-          <div className="absolute top-0 left-0 h-full w-32 bg-linear-to-r from-white to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute top-0 right-0 h-full w-32 bg-linear-to-l from-white to-transparent z-10 pointer-events-none"></div>
+            .swiper-slide {
+              transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+              transition-duration: 1000ms;
+              transform: scale(0.85) translateY(10px);
+              opacity: 0.7;
+            }
+
+            .swiper-slide-active {
+              transform: scale(1) translateY(0);
+              opacity: 1;
+              z-index: 10;
+            }
+
+            .swiper-slide-next,
+            .swiper-slide-prev {
+              transform: scale(0.9) translateY(5px);
+              opacity: 0.85;
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev {
+              color: rgba(255, 255, 255, 0.9) !important;
+              background-color: rgba(255, 255, 255, 0.15);
+              width: 48px;
+              height: 48px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              backdrop-filter: blur(10px);
+              box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+              transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+              border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .swiper-button-next:hover,
+            .swiper-button-prev:hover {
+              background-color: rgba(255, 255, 255, 0.25);
+              transform: scale(1.1) translateY(-2px);
+              box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            }
+
+            .swiper-pagination-bullet {
+              width: 8px;
+              height: 8px;
+              background-color: rgba(255, 255, 255, 0.4);
+              opacity: 1;
+              transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+              transform: scale(1);
+              margin: 0 4px !important;
+            }
+
+            .swiper-pagination-bullet-active {
+              background: linear-linear(45deg, #a855f7, #ec4899);
+              transform: scale(1.5);
+              width: 16px;
+              border-radius: 4px;
+            }
+
+            @media (max-width: 640px) {
+              .swiper-slide {
+                transform: scale(0.75) translateY(15px);
+              }
+
+              .swiper-slide-active {
+                transform: scale(1) translateY(0);
+              }
+
+              .swiper-slide-next,
+              .swiper-slide-prev {
+                transform: scale(0.8) translateY(10px);
+              }
+            }
+          `}</style>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
