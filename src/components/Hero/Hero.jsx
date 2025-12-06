@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const navigate = useNavigate();
-  
+
   return (
     <section
       className="relative w-full bg-white overflow-hidden flex items-center justify-center px-6 md:px-20"
@@ -17,37 +19,69 @@ export default function Hero() {
       <div className="blur-md absolute bottom-10 right-10 w-16 h-16 bg-yellow-400 rounded-full animate-float "></div>
 
       {/* Text Content */}
-      <div
-        className="relative max-w-xl z-10 mr-2 mt-24"
-        // style={{ marginRight: "7rem" }}
-      >
-        <h1 className="text-5xl md:text-6xl font-extrabold leading-light text-black">
-          <span className="block  opacity-0 animate-[fadeUp_0.5s_ease-in_forwards]">
+      <div className="relative max-w-xl z-10 mr-2 mt-24">
+        {/* Heading */}
+        <motion.h1
+          className="text-5xl md:text-6xl font-extrabold leading-light text-black"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.span
+            className="block"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+          >
             Creative.
-          </span>
-          <span className="block  opacity-0 animate-[fadeUp_0.5s_ease-in_300ms_forwards]">
+          </motion.span>
+          <motion.span
+            className="block"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             Clean.
-          </span>
-          <span className="block  opacity-0 animate-[fadeUp_0.5s_ease-in_600ms_forwards]">
+          </motion.span>
+          <motion.span
+            className="block"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
             Impactful.
-          </span>
-          <span className="block  opacity-0 animate-[fadeUp_0.5s_ease-in_900ms_forwards]">
+          </motion.span>
+          <motion.span
+            className="block"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
             Design.
-          </span>
-        </h1>
+          </motion.span>
+        </motion.h1>
 
-        <p className="mt-6 text-gray-600 text-lg leading-relaxed  opacity-0 animate-[fadeUp_0.5s_ease-in_1200ms_forwards]">
-          Graphic design solution <br />
-          that speak volumes.
-        </p>
+        {/* Paragraph */}
+        <motion.p
+          className="mt-6 text-gray-600 text-lg leading-relaxed"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+        >
+          Graphic design solution <br /> that speak volumes.
+        </motion.p>
 
-        <button
-          className="mt-8 bg-[#0a7aff] text-white font-semibold rounded-full  opacity-0 animate-[fadeIn_0.5s_ease-in_1500ms_forwards] hover:scale-105 transition"
+        {/* Button */}
+        <motion.button
+          className="mt-8 bg-[#0a7aff] text-white font-semibold rounded-full hover:scale-105 transition"
           style={{ padding: "0.5rem 1rem" }}
-          onClick={() => navigate("/contact")}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1, duration: 0.6 }}
+          onClick={() => navigate("/contactus")}
         >
           Contact Us
-        </button>
+        </motion.button>
       </div>
     </section>
   );

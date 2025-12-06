@@ -1,184 +1,115 @@
-import React, { useState, useEffect, useRef } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import gsap from "gsap";
+import { motion, useAnimation } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navbarRef = useRef(null);
-
+  const controls = useAnimation();
   const navigate = useNavigate();
+
   let lastScrollY = window.scrollY;
 
   useEffect(() => {
-    const nav = navbarRef.current;
-
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      const currentScroll = window.scrollY;
 
-      gsap.set(nav, { yPercent: 0 });
-
-      if (currentScrollY > lastScrollY) {
-        //scroll down -> hide
-        gsap.to(nav, {
-          yPercent: -100,
-          duration: 0.3,
-          ease: "power2.out",
-        });
+      // Scroll Down → Hide
+      if (currentScroll > lastScrollY) {
+        controls.start({ y: "-100%", transition: { duration: 0.3 } });
       } else {
-        gsap.to(nav, {
-          yPercent: 0,
-          duration: 0.3,
-          ease: "power2.out",
-        });
+        controls.start({ y: "0%", transition: { duration: 0.3 } });
       }
 
-      lastScrollY = currentScrollY;
+      lastScrollY = currentScroll;
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [controls]);
 
   return (
     <>
-      <nav ref={navbarRef} className="fixed top-0 left-0 w-full z-50 h-[50px]">
-        {/* Nav Container  */}
+      {/* NAVBAR */}
+      <motion.nav
+        animate={controls}
+        className="fixed top-0 left-0 w-full z-50 h-[50px]"
+      >
+        {/* Nav Container */}
         <div className="flex justify-between items-center px-6 bg-[#111111] backdrop-blur-lg border-b border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.15)]">
-          {/* Logo  */}
+          {/* Logo */}
           <span
-            className="text-soloLightBlue flex items-center py-2 h-full cursor-pointer active:text-purple-700 no-underline my-2 mx-4 drop-shadow-lg"
+            className="text-soloLightBlue flex items-center py-2 h-full cursor-pointer my-2 mx-4 drop-shadow-lg"
             onClick={() => navigate("/")}
           >
             <span className="text-3xl font-bold">AD</span>
-            <span>&nbsp; </span>
-            <span className=" text-3xl"> Graphics</span>
+            <span className="text-3xl">&nbsp;Graphics</span>
           </span>
 
           {/* DESKTOP MENU */}
           <span className="items-center max-sm:hidden sm:flex justify-between w-[30%] my-2 mx-2">
-            <NavLink
-              className={({ isActive }) =>
-                `text-soloLightBlue text-xl relative pb-1 transition-all ${
-                  isActive ? "after:w-full text-purple-700" : "after:w-0"
-                } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
-              }
-              to="/"
-            >
-              Home
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                `text-soloLightBlue text-xl relative pb-1 transition-all ${
-                  isActive ? "after:w-full text-purple-700" : "after:w-0"
-                } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
-              }
-              to="/portfolio"
-            >
-              Portfolio
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                `text-soloLightBlue text-xl relative pb-1 transition-all ${
-                  isActive ? "after:w-full text-purple-700" : "after:w-0"
-                } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
-              }
-              to="/about"
-            >
-              About
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                `text-soloLightBlue text-xl relative pb-1 transition-all ${
-                  isActive ? "after:w-full text-purple-700" : "after:w-0"
-                } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
-              }
-              to="/contact"
-            >
-              Contact Us
-            </NavLink>
+            {["Home", "Portfolio", "About", "Contact Us"].map((text, idx) => (
+              <NavLink
+                key={idx}
+                to={idx === 0 ? "/" : `/${text.toLowerCase().replace(" ", "")}`}
+                className={({ isActive }) =>
+                  `text-soloLightBlue text-xl relative pb-1 transition-all ${
+                    isActive ? "after:w-full text-purple-700" : "after:w-0"
+                  } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
+                }
+              >
+                {text}
+              </NavLink>
+            ))}
           </span>
 
-          {/* HAMBURGER  */}
+          {/* HAMBURGER */}
           <button
             className="md:hidden flex flex-col gap-1.5 my-2 mx-5"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <span
-              className={`h-1 w-7 bg-white rounded transition ${
-                isOpen ? "rotate-45 translate-y-2.5" : ""
-              }`}
-            ></span>
-            <span
-              className={`h-1 w-7 bg-white rounded transition ${
-                isOpen ? "opacity-0" : ""
-              }`}
-            ></span>
-            <span
-              className={`h-1 w-7 bg-white rounded transition ${
-                isOpen ? "-rotate-45 -translate-y-2.5" : ""
-              }`}
-            ></span>
+            <motion.span
+              animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+              className="h-1 w-7 bg-white rounded"
+            />
+            <motion.span
+              animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="h-1 w-7 bg-white rounded"
+            />
+            <motion.span
+              animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+              className="h-1 w-7 bg-white rounded"
+            />
           </button>
         </div>
 
         {/* MOBILE MENU */}
-        <div
-          style={{ padding: "1rem 0" }}
-          className={`md:hidden flex flex-col items-center gap-6 py-6 bg-white/20 backdrop-blur-xl border-b border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.15)] text-white text-lg transition-all duration-300 ${
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={
             isOpen
-              ? "opacity-100 visible translate-y-0"
-              : "opacity-0 invisible -translate-y-5"
-          }`}
+              ? { opacity: 1, y: 0, visibility: "visible" }
+              : { opacity: 0, y: -10, visibility: "hidden" }
+          }
+          transition={{ duration: 0.3 }}
+          className="md:hidden flex flex-col items-center gap-6 py-6 bg-white/20 backdrop-blur-xl border-b border-white/20 text-white text-lg"
         >
-          <NavLink
-            onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `text-black text-xl relative pb-1 transition-all ${
-                isActive ? "after:w-full text-glow" : "after:w-0"
-              } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
-            }
-            to="/"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `text-black text-xl relative pb-1 transition-all ${
-                isActive ? "after:w-full text-glow" : "after:w-0"
-              } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
-            }
-            to="/portfolio"
-          >
-            Portfolio
-          </NavLink>
-          <NavLink
-            onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `text-black text-xl relative pb-1 transition-all ${
-                isActive ? "after:w-full text-glow" : "after:w-0"
-              } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
-            }
-            to="/about"
-          >
-            About
-          </NavLink>
-          <NavLink
-            onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `text-black text-xl relative pb-1 transition-all ${
-                isActive ? "after:w-full text-glow" : "after:w-0"
-              } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
-            }
-            to="/contact"
-          >
-            Contact Us
-          </NavLink>
-        </div>
-      </nav>
+          {["Home", "Portfolio", "About", "Contact Us"].map((text, idx) => (
+            <NavLink
+              key={idx}
+              to={idx === 0 ? "/" : `/${text.toLowerCase().replace(" ", "")}`}
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) =>
+                `text-black text-xl relative pb-1 transition-all ${
+                  isActive ? "after:w-full text-glow" : "after:w-0"
+                } after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-blue-600 after:transition-all`
+              }
+            >
+              {text}
+            </NavLink>
+          ))}
+        </motion.div>
+      </motion.nav>
     </>
   );
 };

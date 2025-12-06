@@ -1,7 +1,7 @@
 // Portfolio.jsx
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { useRef } from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 import banner from "../assets/icons/banner.JPG";
@@ -9,44 +9,9 @@ import phamplet from "../assets/icons/phamplet.JPG";
 import standee from "../assets/icons/standee.WEBP";
 import visitingCard from "../assets/icons/visitingCard.JPG";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Portfolio = () => {
   const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
-
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // fade In Section
-      gsap.from(".portfolio-text", {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-
-      // Stagger cards
-      gsap.from(cardsRef.current, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   const items = [
     { title: "Banner", img: banner },
@@ -67,7 +32,13 @@ const Portfolio = () => {
       <div className="absolute left-1/3 top-1/4 w-48 h-48 bg-linear-to-r from-pink-300 to-rose-300 rounded-full opacity-30 blur-3xl"></div>
 
       {/* LEFT SIDE */}
-      <div className="portfolio-text max-w-lg py-4 ml-4 max-h-1/2 max-sm:max-h-full max-sm:mb-6 max-sm:mt-6 sm:ml-24">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="portfolio-text max-w-lg py-4 ml-4 max-h-1/2 max-sm:max-h-full max-sm:mb-6 max-sm:mt-6 sm:ml-24"
+      >
         <h1 className="text-6xl font-bold pb-2">Portfolio</h1>
         <p className="text-gray-700 text-xl mb-4">A selection of our work.</p>
 
@@ -77,21 +48,26 @@ const Portfolio = () => {
         >
           View More
         </button>
-      </div>
+      </motion.div>
 
       {/* RIGHT SIDE GRID */}
       <div className="flex flex-wrap gap-4 h-auto min-w-[60%] max-sm:min-h-full">
         {items.map((item, i) => (
-          <div
+          <motion.div
             key={i}
-            ref={(el) => (cardsRef.current[i] = el)}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.9,
+              ease: "easeOut",
+              delay: i * 0.2, // stagger effect
+            }}
+            viewport={{ once: true, amount: 0.3 }}
             className={`bg-white/80 backdrop-blur-sm w-[45%] max-md:w-[90vw] h-52 rounded-xl flex items-end relative overflow-x-hidden border border-white/50 shadow-lg hover:scale-105 transition-transform hover:-translate-y-2 hover:shadow-xl ${
-              i == 3 ? "mb-8" : ""
+              i === 3 ? "mb-8" : ""
             }`}
           >
-            <div
-              className={`absolute inset-0 flex flex-col items-center justify-center `}
-            >
+            <div className={`absolute inset-0 flex flex-col items-center justify-center`}>
               <img
                 src={item.img}
                 className="w-full h-[90%] opacity-90 object-cover rounded-t-xl"
@@ -101,7 +77,7 @@ const Portfolio = () => {
                 {item.title}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
